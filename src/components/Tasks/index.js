@@ -8,7 +8,7 @@ import edit from '../../assets/images/edit.png';
 import done from '../../assets/images/done.png';
 import { FlatList, TouchableOpacity } from 'react-native';
 
-export default function Tasks({ tasks }) {
+export default function Tasks({ tasks, onDelete }) {
     return (
         <FlatList 
             data={tasks}
@@ -34,7 +34,7 @@ export default function Tasks({ tasks }) {
                     <TouchableOpacity onPress={() => alert("Abrir Modal de Edição")}>
                         <TaskIcon source={edit}/>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => alert("Abrir Modal de Exclusão")}>
+                    <TouchableOpacity onPress={() => onDelete(task)}>
                         <TaskIcon source={excluir}/>
                     </TouchableOpacity>
                     
