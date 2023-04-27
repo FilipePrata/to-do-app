@@ -6,9 +6,12 @@ import Tasks from '../components/Tasks';
 import AddButton from '../components/AddButton';
 import DeleteConfirmModal from '../components/DeleteConfirmModal';
 import { useState } from 'react';
+import NewTaskModal from '../components/NewTaskModal';
 
 export default function Main() {
   const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
+  const [isNewTaskModalVisible, setIsNewTaskModalVisible] = useState(false);
+
 
   function handleDeleteTask(){
     setIsDeleteModalVisible(true);
@@ -23,12 +26,18 @@ export default function Main() {
         tasks={tasks}/>
       </TasksContainer>
 
-      <AddButton onPress={() => alert("Chamar modal de criação de tarefa")}/>
+      <AddButton onPress={() => setIsNewTaskModalVisible(true)}/>
       
       <DeleteConfirmModal
       visible={isDeleteModalVisible}
       onClose={() => setIsDeleteModalVisible(false)}
       onConfirm={() => alert('Deletar')}
+      />
+
+      <NewTaskModal 
+        visible={isNewTaskModalVisible}
+        onClose={() => setIsNewTaskModalVisible(false)}
+        onSave={() => alert("Salvar")}
       />
     </Container>
   );
